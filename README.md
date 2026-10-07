@@ -1,53 +1,78 @@
-# 📅 Sistema Automatizado de Escalas Semanais
+# 📅 Sistema de Automatização de Escalas Semanais (SAES)
 
-Um sistema prático para automatizar a criação de escalas de trabalho com base na disponibilidade dos colaboradores. Os funcionários respondem a uma enquete simples informando os dias em que podem trabalhar, e o sistema consolida esses dados para gerar a escala final da semana.
-
-## 🚀 Como Funciona?
-
-1. **Coleta de Disponibilidade:** Os funcionários acessam um formulário/enquete e marcam os dias da semana em que estão disponíveis.
-2. **Processamento de Dados:** O sistema cruza os dias informados pelos colaboradores com a quantidade de vagas necessárias por dia.
-3. **Geração da Escala:** É gerada uma grade final balanceada, priorizando a distribuição justa de turnos.
+**Trabalho Acadêmico — Engenharia de Software**  
+**Instituição:** Faculdade de Tecnologia (FATEC)  
+**Professor Orientador:** Prof. Arnaldo  
+**Discente:** Anderson Santana  
 
 ---
 
-## 🛠️ Tecnologias Recomendadas
-
-Dependendo de como você quer construir o projeto, sugerimos duas abordagens:
-
-*   **Abordagem No-Code / Low-Code (Rápida):** Google Forms / Microsoft Forms + Google Sheets + Script de automação (Apps Script).
-*   **Abordagem Full-Stack (Personalizada):** Frontend em React/Vue para a enquete e Backend em Node.js/Python com banco de dados (PostgreSQL/MongoDB) para rodar o algoritmo de escala.
+## 📌 Visão Geral do Projeto
+O SAES é uma solução de software concebida para otimizar o processo de gestão e alocação de recursos humanos. O sistema automatiza a criação de escalas de trabalho semanais a partir da coleta ativa da disponibilidade dos colaboradores por meio de uma interface de enquetes (inputs binários de disponibilidade por dia da semana), reduzindo o tempo de planejamento logístico e mitigando erros de sobrecarga de turnos.
 
 ---
 
-## 📋 Regras de Negócio e Algoritmo
+## 📋 Engenharia de Requisitos
 
-Para que o gerador de escala funcione corretamente, as seguintes regras devem ser implementadas no código:
+### Requisitos Funcionais (RF)
+*   **RF-001 [Declaração de Disponibilidade]:** O sistema deve permitir que o funcionário selecione múltiplos dias da semana em que está disponível para trabalhar por meio de uma interface binária (Sim/Não).
+*   **RF-002 [Consolidação de Dados]:** O sistema deve processar as respostas e cruzar os dados com a demanda mínima diária de vagas exigida pela organização.
+*   **RF-003 [Algoritmo de Escala]:** O sistema deve gerar uma grade de escala balanceada respeitando as restrições contratuais e limites de carga horária.
+*   **RF-004 [Visualização e Exportação]:** O sistema deve exibir a escala final homologada de forma clara para o gestor e para a equipe.
 
-*   **Mínimo de Colaboradores:** Garantir o número mínimo de pessoas exigido por dia de trabalho.
-*   **Limite de Carga Horária:** Evitar que o mesmo funcionário seja escalado mais vezes do que o permitido por lei ou contrato.
-*   **Descanso Obrigatório:** Respeitar o intervalo mínimo de descanso entre turnos.
-*   **Prioridade:** Caso um dia tenha excesso de voluntários, o sistema deve priorizar quem trabalhou menos na semana anterior.
+### Requisitos Não-Funcionais (RNF)
+*   **RNF-001 [Usabilidade]:** A interface da enquete deve ser responsiva e de fácil interação (mobile-friendly), garantindo alta taxa de adesão dos colaboradores.
+*   **RNF-002 [Consistência de Dados]:** O backend deve garantir a integridade das respostas mesmo sob acessos simultâneos (concorrência) no período de fechamento da enquete.
 
 ---
 
-## 💻 Estrutura do Arquivo de Dados (Exemplo JSON)
+## 🏗️ Modelagem e Artefatos do Projeto
 
-Se você estiver desenvolvendo via código, o formato dos dados recebidos da enquete deve seguir esta estrutura:
+A fundamentação teórica, modelagem de processos e arquitetura de banco de dados deste ecossistema de projetos foram baseadas nas seguintes referências e repositórios acadêmicos integrados:
+
+*   **🗂️ Modelagem de Processos e Diagramas UML:** Os diagramas de Caso de Uso, Fluxo de Dados e Entidade-Relacionamento do ecossistema de software seguem os padrões estabelecidos na [Pasta de Diagramas UML](https://github.com).
+*   **🚀 Projeto Integrador de Base:** A documentação conceitual e a estrutura de escopo inicial foram desenvolvidas com apoio do repositório base [Projeto Integrador - Semestre 1](https://github.com).
+*   **📱 Arquitetura de Software e Interface:** A lógica de consumo de APIs e persistência dos dados tomou como referência arquitetural o modelo escalável do repositório [UniMove](http://github.com).
+
+### Estrutura de Entrada de Dados (Payload JSON de Exemplo)
+Para o processamento de regras do algoritmo, o sistema consome estruturas padronizadas de dados como o exemplo abaixo:
 
 ```json
-[
-  {
-    "nome": "João Silva",
-    "disponibilidade": ["Segunda", "Terça", "Sexta"]
-  },
-  {
-    "nome": "Maria Souza",
-    "disponibilidade": ["Quarta", "Quinta", "Sábado", "Domingo"]
+{
+  "colaborador_id": "FT-2026-AS",
+  "nome": "Anderson Santana",
+  "disponibilidade_dias": {
+    "segunda": true,
+    "terca": true,
+    "quarta": false,
+    "quinta": false,
+    "sexta": true,
+    "sabado": false,
+    "domingo": false
   }
-]
+}
 ```
 
 ---
 
+## 🔧 Como Executar o Projeto Localmente
 
-Desenvolvido para otimizar a gestão de equipes e economizar tempo na montagem de escalas. 🕒
+1. Clone este repositório para a sua máquina local:
+   ```bash
+   git clone https://github.com
+   ```
+2. Navegue até a pasta do projeto:
+   ```bash
+   cd NOME-DO-REPOSITORIO
+   ```
+3. Instale as dependências estruturais (conforme o ambiente escolhido):
+   ```bash
+   npm install
+   ```
+4. Inicie o ambiente de desenvolvimento local:
+   ```bash
+   npm start
+   ```
+
+---
+*Projeto desenvolvido como critério de avaliação para a disciplina de Engenharia de Software na FATEC.* 🚀
