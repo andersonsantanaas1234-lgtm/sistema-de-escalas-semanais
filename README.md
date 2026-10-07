@@ -49,22 +49,5 @@ Se você estiver desenvolvendo via código, o formato dos dados recebidos da enq
 
 ---
 
-## 🔧 Como Executar o Projeto
 
-*(Instruções para quem for baixar o seu projeto no futuro)*
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com
-   ```
-2. Instale as dependências (Exemplo se for Node.js):
-   ```bash
-   npm install
-   ```
-3. Inicie o servidor:
-   ```bash
-   npm start
-   ```
-
----
 Desenvolvido para otimizar a gestão de equipes e economizar tempo na montagem de escalas. 🕒
